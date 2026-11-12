@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crimiclave Navidad · Extra gratuito</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#1a0306;--card:#2a070c;--red:#8B0000;--gold:#F4C430;--txt:#f5ecd9;--mut:#cdbb9a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:Georgia,"Times New Roman",serif;line-height:1.5}
+main{max-width:620px;margin:0 auto;padding:28px 16px 40px}
+.kick{letter-spacing:.18em;font:600 12px/1.2 Arial,Helvetica,sans-serif;color:var(--gold);text-align:center;margin:0 0 10px}
+h1{font-size:30px;line-height:1.15;text-align:center;margin:0 0 18px}
+ul{padding-left:20px;margin:0 0 22px}li{margin:4px 0}
+.case{background:var(--card);border:1px solid #5a1a20;border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.case h2{font:700 13px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.12em;color:var(--gold);margin:0 0 8px}
+.case p{margin:6px 0}.q{font-style:italic}
+form{display:grid;gap:10px}
+input[type=email]{width:100%;padding:14px;border-radius:8px;border:1px solid #6b2a30;background:#fff;color:#111;font-size:16px}
+label.chk{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--mut)}
+button{background:var(--red);color:var(--gold);border:0;border-radius:12px;padding:15px;font:700 18px Georgia,serif;cursor:pointer}
+button:disabled{opacity:.6;cursor:default}
+.ok{display:none;background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:16px;text-align:center}
+.legal{font:12px/1.45 Arial,Helvetica,sans-serif;color:var(--mut);margin-top:22px}
+</style>
+</head>
+<body>
+<main>
+<p class="kick">CRIMICLAVE · NAVIDAD · EXTRA GRATUITO</p>
+<h1>El archivo no se cierra en Navidad…</h1>
+<ul>
+<li>50 planos de lógica navideños de nivel experto, con soluciones</li>
+<li>50 sopas de letras navideñas, cada una con un tema distinto</li>
+<li>PDF para imprimir, listo para resolver con papel y lápiz</li>
+</ul>
+<div class="case">
+<h2>ANTES DE ENTRAR, UN CASO RÁPIDO</h2>
+<p>Ha desaparecido la figura del Niño del belén. Uno de estos tres sospechosos se la llevó. Exactamente uno de ellos dice la verdad; los otros dos mienten.</p>
+<p class="q">Ramón: «Fue Celia.»<br>Celia: «Yo no fui.»<br>Inés: «Ramón no fue.»</p>
+<p>Pista: prueba con cada sospechoso como culpable y cuenta cuántos dicen la verdad. ¿Quién se llevó la figura? La respuesta te llega en el correo, junto con tu bonus navideño.</p>
+</div>
+<form id="f" action="https://assets.mailerlite.com/jsonp/2220751/forms/203928273859643077/subscribe" method="post">
+<input type="email" name="fields[email]" placeholder="Tu correo electrónico" required autocomplete="email">
+<label class="chk"><input type="checkbox" required> <span>Acepto recibir el extra y correos de Archivo Crimiclave. Puedo darme de baja cuando quiera.</span></label>
+<input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
+<button type="submit">Quiero mi bonus y la solución</button>
+</form>
+<div class="ok" id="ok"><strong>¡Casi está!</strong><br>Te hemos enviado un correo para confirmar tu dirección. Confírmala y te llegará el extra (mira también en «Promociones» o «Spam»).</div>
+<p class="legal">Responsable: Archivo Crimiclave (Legado Editorial). Finalidad: enviarte el extra y comunicaciones sobre Crimiclave. Los datos se gestionan con MailerLite. Puedes darte de baja en cualquier correo o escribir a contacto@legadoeditorial.es.</p>
+</main>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();var f=this,b=f.querySelector('button');b.disabled=true;b.textContent='Enviando…';
+  fetch(f.action,{method:'POST',mode:'no-cors',body:new FormData(f)})
+   .then(function(){f.style.display='none';document.getElementById('ok').style.display='block';})
+   .catch(function(){b.disabled=false;b.textContent='Quiero mi bonus y la solución';alert('No se ha podido enviar. Inténtalo de nuevo.');});
+});
+</script>
+</body>
+</html>
