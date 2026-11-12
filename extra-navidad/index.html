@@ -48,15 +48,21 @@ button:disabled{opacity:.6;cursor:default}
 <input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
 <button type="submit">Quiero mi bonus y la solución</button>
 </form>
+<p id="err" style="display:none;color:#ffb3b3;font:14px Arial,sans-serif">No se ha podido completar el registro. Revisa el correo e inténtalo de nuevo en unos minutos.</p>
 <div class="ok" id="ok"><strong>¡Casi está!</strong><br>Te hemos enviado un correo para confirmar tu dirección. Confírmala y te llegará el extra (mira también en «Promociones» o «Spam»).</div>
 <p class="legal">Responsable: Archivo Crimiclave (Legado Editorial). Finalidad: enviarte el extra y comunicaciones sobre Crimiclave. Los datos se gestionan con MailerLite. Puedes darte de baja en cualquier correo o escribir a contacto@legadoeditorial.es.</p>
 </main>
 <script>
 document.getElementById('f').addEventListener('submit',function(e){
   e.preventDefault();var f=this,b=f.querySelector('button');b.disabled=true;b.textContent='Enviando…';
-  fetch(f.action,{method:'POST',mode:'no-cors',body:new FormData(f)})
-   .then(function(){f.style.display='none';document.getElementById('ok').style.display='block';})
-   .catch(function(){b.disabled=false;b.textContent='Quiero mi bonus y la solución';alert('No se ha podido enviar. Inténtalo de nuevo.');});
+  fetch(f.action,{method:'POST',body:new FormData(f)})
+   .then(function(r){return r.json();})
+   .then(function(d){
+     if(d&&d.success){f.style.display='none';document.getElementById('ok').style.display='block';}
+     else{throw new Error(JSON.stringify(d&&d.errors||d));}
+   })
+   .catch(function(err){console.log('ML',err);b.disabled=false;b.textContent='Quiero mi bonus y la solución';
+     document.getElementById('err').style.display='block';});
 });
 </script>
 </body>
