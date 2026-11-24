@@ -35,18 +35,13 @@ button:disabled{opacity:.6;cursor:default}
 <li>50 planos de lógica navideños de nivel experto, con soluciones</li>
 <li>50 sopas de letras navideñas, cada una con un tema distinto</li>
 <li>PDF para imprimir, listo para resolver con papel y lápiz</li>
+<li>Explicación paso a paso de cada plano, por si te atascas</li>
 </ul>
-<div class="case">
-<h2>ANTES DE ENTRAR, UN CASO RÁPIDO</h2>
-<p>Ha desaparecido la figura del Niño del belén. Uno de estos tres sospechosos se la llevó. Exactamente uno de ellos dice la verdad; los otros dos mienten.</p>
-<p class="q">Ramón: «Fue Celia.»<br>Celia: «Yo no fui.»<br>Inés: «Ramón no fue.»</p>
-<p>Pista: prueba con cada sospechoso como culpable y cuenta cuántos dicen la verdad. ¿Quién se llevó la figura? La respuesta te llega en el correo, junto con tu bonus navideño.</p>
-</div>
 <form id="f" action="https://assets.mailerlite.com/jsonp/2220751/forms/203928273859643077/subscribe" method="post">
 <input type="email" name="fields[email]" placeholder="Tu correo electrónico" required autocomplete="email">
 <label class="chk"><input type="checkbox" required> <span>Acepto recibir el extra y correos de Archivo Crimiclave. Puedo darme de baja cuando quiera.</span></label>
 <input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
-<button type="submit">Quiero mi bonus y la solución</button>
+<button type="submit">Quiero mi extra</button>
 </form>
 <p id="err" style="display:none;color:#ffb3b3;font:14px Arial,sans-serif">No se ha podido completar el registro. Revisa el correo e inténtalo de nuevo en unos minutos.</p>
 <div class="ok" id="ok"><strong>¡Casi está!</strong><br>Te hemos enviado un correo para confirmar tu dirección. Confírmala y te llegará el extra (mira también en «Promociones» o «Spam»).</div>
@@ -61,7 +56,7 @@ document.getElementById('f').addEventListener('submit',function(e){
      if(d&&d.success){f.style.display='none';document.getElementById('ok').style.display='block';}
      else{throw new Error(JSON.stringify(d&&d.errors||d));}
    })
-   .catch(function(err){console.log('ML',err);b.disabled=false;b.textContent='Quiero mi bonus y la solución';
+   .catch(function(err){console.log('ML',err);b.disabled=false;b.textContent='Quiero mi extra';
      document.getElementById('err').style.display='block';});
 });
 </script>
